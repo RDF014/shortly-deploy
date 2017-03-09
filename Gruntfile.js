@@ -38,6 +38,8 @@ module.exports = function(grunt) {
     eslint: {
       target: [
         // Add list of files to lint here
+        'public/**/*.js',
+        'app/**/*.js'
       ]
     },
 
@@ -94,7 +96,7 @@ module.exports = function(grunt) {
   ]);
 
   grunt.registerTask('build', [
-    'concat', 'uglify', 'cssmin'
+    'eslint', 'concat', 'uglify', 'cssmin'
   ]);
 
   grunt.registerTask('upload', function(n) {
@@ -107,6 +109,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('deploy', [
     // add your deploy tasks here
+    'test', 'build'
   ]);
 
 
